@@ -1,0 +1,82 @@
+# 敏感文件
+*.json
+!package.json
+openclaw.json
+config.yaml
+*.key
+*.pem
+*.token
+*.secret
+
+# 环境变量
+.env
+.env.local
+
+# Node
+node_modules/
+dist/
+
+# 日志
+*.log
+logs/
+
+# 临时文件
+tmp/
+temp/
+*.tmp
+
+# 媒体文件
+media/
+*.mp3
+*.ogg
+*.wav
+*.jpg
+*.png
+*.mp4
+
+# Git
+.git/
+
+# System
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.vs/
+*.swp
+*.swo
+
+# 备份文件
+*.bak
+*.backup
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# 技能额外文件
+skills/*/references/
+skills/*/scripts/
+skills/*/assets/
+skills/*/README.md
+skills/*/example.md
+skills/*/quickref.md
+skills/*/CHANGELOG.md
+skills/*/INSTALLATION.md
+skills/*/package.json
+skills/*/index.js
+skills/*/index.d.ts
+skills/*/*.js
+skills/*/*.ts
+skills/*/*.d.ts
+
+# 根目录额外文件
+BOOTSTRAP.md
+IDENTITY.md
+LEARNING.md
+MEMORY_SYSTEM.md
+openclaw-foundry/
+vscodium-minimax-guide.md
+scripts/
