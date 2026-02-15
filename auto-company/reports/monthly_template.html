@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>亮仔月报 - {{month}}</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh; padding: 30px;
+        }
+        .container { max-width: 1100px; margin: 0 auto; }
+        .header {
+            text-align: center; padding: 50px; color: #fff;
+            background: linear-gradient(135deg, #aa076b 0%, #61045f 100%);
+            border-radius: 16px; margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+        }
+        .header h1 { font-size: 3em; margin-bottom: 15px; }
+        .header .month { font-size: 1.5em; opacity: 0.9; }
+        
+        .section {
+            background: rgba(255,255,255,0.97);
+            border-radius: 16px;
+            padding: 35px; margin: 25px 0;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+        .section h2 {
+            color: #1a1a2e; border-bottom: 3px solid #aa076b;
+            padding-bottom: 20px; margin-bottom: 30px; font-size: 1.8em;
+        }
+        
+        .hero-stats {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px; margin: 30px 0;
+        }
+        .hero-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff; padding: 30px; border-radius: 16px; text-align: center;
+            transform: scale(1); transition: transform 0.3s;
+        }
+        .hero-card:hover { transform: scale(1.05); }
+        .hero-card .value { font-size: 3em; font-weight: 900; }
+        .hero-card .label { font-size: 1.2em; opacity: 0.9; margin-top: 10px; }
+        
+        .growth {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 25px; background: linear-gradient(90deg, #11998e, #38ef7d);
+            border-radius: 12px; color: #fff; margin: 20px 0;
+        }
+        .growth .rate { font-size: 2.5em; font-weight: bold; }
+        
+        .timeline {
+            position: relative; padding-left: 30px;
+        }
+        .timeline:before {
+            content: ""; position: absolute; left: 0; top: 0;
+            width: 4px; height: 100%; background: #aa076b;
+            border-radius: 2px;
+        }
+        .timeline-item {
+            position: relative; padding: 20px; margin: 20px 0;
+            background: #f8f9fa; border-radius: 12px;
+        }
+        .timeline-item:before {
+            content: "📌"; position: absolute; left: -38px; top: 20px;
+            font-size: 1.5em;
+        }
+        .timeline-item h4 { color: #aa076b; margin-bottom: 10px; }
+        
+        .insight {
+            background: linear-gradient(135deg, #ffe259 0%, #ffa751 100%);
+            padding: 25px; border-radius: 12px; margin: 20px 0;
+        }
+        .insight h3 { color: #333; margin-bottom: 15px; }
+        .insight p { color: #444; line-height: 1.8; }
+        
+        .footer {
+            text-align: center; padding: 30px; color: #aaa;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌟 月度总结</h1>
+            <div class="month">{{month}} {{year}}</div>
+        </div>
+        
+        <div class="section">
+            <h2>🚀 核心成就</h2>
+            <div class="hero-stats">
+                <div class="hero-card">
+                    <div class="value">{{total_skills}}</div>
+                    <div class="label">技能总数</div>
+                </div>
+                <div class="hero-card">
+                    <div class="value">{{growth_rate}}%</div>
+                    <div class="label">增长率</div>
+                </div>
+                <div class="hero-card">
+                    <div class="value">{{patterns}}</div>
+                    <div class="label">学习模式</div>
+                </div>
+                <div class="hero-card">
+                    <div class="value">{{crystallized}}</div>
+                    <div class="label">已结晶</div>
+                </div>
+            </div>
+            
+            <div class="growth">
+                <span>本月技能增长</span>
+                <span class="rate">+{{new_skills}}</span>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📜 大事记</h2>
+            <div class="timeline">
+                {{timeline}}
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>💎 深度洞察</h2>
+            <div class="insight">
+                <h3>🎯 核心突破</h3>
+                {{breakthroughs}}
+            </div>
+            <div class="insight" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                <h3>🌱 成长轨迹</h3>
+                {{growth}}
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🔮 下月规划</h2>
+            {{next_month}}
+        </div>
+        
+        <div class="footer">
+            <p>🤖 Auto Company 月度报告系统</p>
+            <p>Generated: {{timestamp}}</p>
+        </div>
+    </div>
+</body>
+</html>

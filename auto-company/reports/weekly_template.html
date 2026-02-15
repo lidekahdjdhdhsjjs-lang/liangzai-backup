@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>亮仔周报 - {{week}}</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh; padding: 20px;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .header {
+            text-align: center; padding: 40px; color: #fff;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px; margin-bottom: 30px;
+        }
+        .header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .header .week { font-size: 1.3em; opacity: 0.9; }
+        
+        .section {
+            background: rgba(255,255,255,0.95);
+            border-radius: 12px;
+            padding: 30px; margin: 20px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .section h2 {
+            color: #1a1a2e; border-bottom: 2px solid #4a9eff;
+            padding-bottom: 15px; margin-bottom: 25px; font-size: 1.5em;
+        }
+        
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
+        .stat-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: #fff; padding: 25px; border-radius: 12px; text-align: center;
+        }
+        .stat-card .value { font-size: 2.5em; font-weight: bold; }
+        .stat-card .label { font-size: 1em; opacity: 0.9; margin-top: 8px; }
+        
+        .chart {
+            display: flex; align-items: flex-end; height: 200px;
+            gap: 10px; padding: 20px 0;
+        }
+        .chart-bar {
+            flex: 1; background: linear-gradient(to top, #4a9eff, #667eea);
+            border-radius: 6px 6px 0 0; min-height: 20px;
+            position: relative; transition: all 0.3s;
+        }
+        .chart-bar:hover { opacity: 0.8; transform: scaleY(1.05); }
+        .chart-bar .day {
+            position: absolute; bottom: -25px; left: 50%;
+            transform: translateX(-50%); font-size: 0.8em; color: #666;
+        }
+        
+        .reflection {
+            background: #f8f9fa; border-radius: 10px; padding: 25px;
+            margin: 20px 0;
+        }
+        .reflection h3 { 
+            color: #1a1a2e; margin-bottom: 20px; 
+            display: flex; align-items: center;
+        }
+        .reflection h3:before {
+            content: "💭"; margin-right: 10px;
+        }
+        .reflection p { line-height: 1.8; color: #555; font-size: 1.05em; }
+        
+        .highlight { 
+            padding: 20px; border-radius: 10px; margin: 15px 0; 
+            font-size: 1.05em; line-height: 1.7;
+        }
+        .highlight.positive { background: #d4edda; color: #155724; }
+        .highlight.negative { background: #f8d7da; color: #721c24; }
+        
+        .milestone {
+            display: flex; align-items: center; padding: 15px;
+            background: #e7f3ff; border-radius: 8px; margin: 10px 0;
+            border-left: 4px solid #4a9eff;
+        }
+        .milestone:before { content: "🎯"; margin-right: 15px; font-size: 1.5em; }
+        
+        .footer {
+            text-align: center; padding: 30px; color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📈 周报总结</h1>
+            <div class="week">第 {{week}} 周 ({{date_range}})</div>
+        </div>
+        
+        <div class="section">
+            <h2>📊 本周数据</h2>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="value">{{total_skills}}</div>
+                    <div class="label">技能总数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">{{new_skills}}</div>
+                    <div class="label">新增技能</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">{{total_patterns}}</div>
+                    <div class="label">学习模式</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">{{crystallized}}</div>
+                    <div class="label">已结晶</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">{{evolutions}}</div>
+                    <div class="label">进化次数</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📅 每日活动</h2>
+            <div class="chart">
+                {{daily_chart}}
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🎯 里程碑</h2>
+            {{milestones}}
+        </div>
+        
+        <div class="section">
+            <h2>💡 深度反思</h2>
+            <div class="reflection">
+                <h3>本周成就</h3>
+                {{achievements}}
+            </div>
+            <div class="reflection">
+                <h3>挑战与解决</h3>
+                {{challenges}}
+            </div>
+            <div class="reflection">
+                <h3>经验教训</h3>
+                {{lessons}}
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📋 下周计划</h2>
+            {{next_week}}
+        </div>
+        
+        <div class="footer">
+            <p>🤖 Auto Company 周报系统</p>
+            <p>Generated: {{timestamp}}</p>
+        </div>
+    </div>
+</body>
+</html>

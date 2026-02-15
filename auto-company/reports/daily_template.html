@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>亮仔日报 - {{date}}</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh; padding: 20px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header {
+            text-align: center; padding: 30px; color: #fff;
+            border-bottom: 2px solid #4a9eff;
+        }
+        .header h1 { font-size: 2em; margin-bottom: 10px; }
+        .header .date { color: #4a9eff; font-size: 1.1em; }
+        
+        .section {
+            background: rgba(255,255,255,0.95);
+            border-radius: 12px;
+            padding: 25px; margin: 20px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .section h2 {
+            color: #1a1a2e; border-left: 4px solid #4a9eff;
+            padding-left: 15px; margin-bottom: 20px; font-size: 1.3em;
+        }
+        
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff; padding: 20px; border-radius: 10px; text-align: center;
+        }
+        .stat-card .value { font-size: 2em; font-weight: bold; }
+        .stat-card .label { font-size: 0.9em; opacity: 0.9; margin-top: 5px; }
+        
+        .metric { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #eee; }
+        .metric:last-child { border: none; }
+        .metric .name { font-weight: 600; color: #333; }
+        .metric .value { color: #4a9eff; font-weight: bold; }
+        
+        .reflection {
+            background: #f8f9fa; border-radius: 8px; padding: 20px;
+            border-left: 4px solid #28a745;
+        }
+        .reflection h3 { color: #28a745; margin-bottom: 15px; }
+        .reflection p { line-height: 1.8; color: #555; margin-bottom: 10px; }
+        
+        .highlight { background: #fff3cd; padding: 15px; border-radius: 8px; margin: 10px 0; }
+        .highlight.positive { background: #d4edda; border-left: 4px solid #28a745; }
+        .highlight.negative { background: #f8d7da; border-left: 4px solid #dc3545; }
+        .highlight.neutral { background: #e2e3e5; border-left: 4px solid #6c757d; }
+        
+        .todo { list-style: none; }
+        .todo li {
+            padding: 12px 15px; margin: 8px 0;
+            background: #f0f7ff; border-radius: 6px;
+            display: flex; align-items: center;
+        }
+        .todo li:before { content: "○"; margin-right: 10px; color: #4a9eff; }
+        
+        .footer {
+            text-align: center; padding: 20px; color: #888;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 亮仔 AI 助手</h1>
+            <div class="date">日报 - {{date}}</div>
+        </div>
+        
+        <div class="section">
+            <h2>📊 核心指标</h2>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="value">{{skills}}</div>
+                    <div class="label">技能数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">{{patterns}}</div>
+                    <div class="label">学习模式</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">{{cron_jobs}}</div>
+                    <div class="label">定时任务</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">{{crystallized}}</div>
+                    <div class="label">已结晶</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>✅ 今日完成</h2>
+            <div class="metric">
+                <span class="name">技能安装</span>
+                <span class="value">{{skills_installed}}</span>
+            </div>
+            <div class="metric">
+                <span class="name">模式学习</span>
+                <span class="value">{{patterns_learned}}</span>
+            </div>
+            <div class="metric">
+                <span class="name">进化次数</span>
+                <span class="value">{{evolutions}}</span>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>💡 反思与改进</h2>
+            <div class="reflection">
+                <h3>做得好的</h3>
+                {{positives}}
+            </div>
+            <div class="reflection" style="margin-top: 15px; border-left-color: #dc3545;">
+                <h3>需要改进</h3>
+                {{improvements}}
+            </div>
+            <div class="reflection" style="margin-top: 15px; border-left-color: #6c757d;">
+                <h3>学到的教训</h3>
+                {{lessons}}
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📋 明日计划</h2>
+            <ul class="todo">
+                {{tomorrow_tasks}}
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>🔧 技术债务</h2>
+            <div class="highlight neutral">
+                <strong>待解决:</strong> {{tech_debt}}
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>🤖 Auto Company 运营系统 | 由亮仔AI驱动</p>
+            <p>Generated at {{timestamp}}</p>
+        </div>
+    </div>
+</body>
+</html>
