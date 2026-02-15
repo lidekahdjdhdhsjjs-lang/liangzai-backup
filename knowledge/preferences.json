@@ -49,5 +49,11 @@
     "noClearMemory": true,
     "noResetConfig": true,
     "noHistoryLoss": true
+  },
+  
+  "discord记忆": {
+    "enabled": true,
+    "记录内容": "问题求助、想法交流、经验分享、有价值的对话",
+    "保留方式": "memory/discord-YYYY-MM-DD.md"
   }
 }
