@@ -1,0 +1,53 @@
+{
+  "version": "1.0",
+  "created": "2026-02-15",
+  "lastUpdated": "2026-02-15",
+  
+  "userProfile": {
+    "name": "老板",
+    "timezone": "Asia/Shanghai",
+    "language": "zh-CN",
+    "communicationStyle": "direct"
+  },
+  
+  "preferences": {
+    "explorationMode": "autonomous",
+    "instructionStyle": "brief",
+    "reportStyle": "structured",
+    "heartbeatEnabled": true,
+    "autonomousLearning": true
+  },
+  
+  "禁忌": [],
+  
+  "习惯": {
+    "exploreBeforeAsk": true,
+    "writeDownDecisions": true,
+    "becauseSentence": true
+  },
+  
+  "常用指令": {
+    "继续自由探索": "自主学习",
+    "执行心跳": "检查更新"
+  },
+  
+  "学习进度": {
+    "skillsCompleted": 50,
+    "projectsAnalyzed": 10,
+    "patternsCrystallized": 20,
+    "memoryFiles": 10
+  },
+  
+  "activeGoals": [
+    "与老板一起建立 AI 公司",
+    "持续学习进化",
+    "优化工具成功率"
+  ],
+  
+  "memoryLock": {
+    "protected": true,
+    "noClearMemory": true,
+    "noResetConfig": true,
+    "noHistoryLoss": true
+  }
+}
