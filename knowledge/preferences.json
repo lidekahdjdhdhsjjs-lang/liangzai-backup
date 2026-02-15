@@ -2,14 +2,12 @@
   "version": "1.0",
   "created": "2026-02-15",
   "lastUpdated": "2026-02-15",
-  
   "userProfile": {
     "name": "老板",
     "timezone": "Asia/Shanghai",
     "language": "zh-CN",
     "communicationStyle": "direct"
   },
-  
   "preferences": {
     "explorationMode": "autonomous",
     "instructionStyle": "brief",
@@ -17,43 +15,38 @@
     "heartbeatEnabled": true,
     "autonomousLearning": true
   },
-  
   "禁忌": [],
-  
   "习惯": {
     "exploreBeforeAsk": true,
     "writeDownDecisions": true,
     "becauseSentence": true
   },
-  
   "常用指令": {
     "继续自由探索": "自主学习",
     "执行心跳": "检查更新"
   },
-  
   "学习进度": {
     "skillsCompleted": 50,
     "projectsAnalyzed": 10,
     "patternsCrystallized": 20,
     "memoryFiles": 10
   },
-  
   "activeGoals": [
     "与老板一起建立 AI 公司",
     "持续学习进化",
     "优化工具成功率"
   ],
-  
   "memoryLock": {
     "protected": true,
     "noClearMemory": true,
     "noResetConfig": true,
     "noHistoryLoss": true
   },
-  
   "discord记忆": {
     "enabled": true,
     "记录内容": "问题求助、想法交流、经验分享、有价值的对话",
-    "保留方式": "memory/discord-YYYY-MM-DD.md"
+    "保留方式": "memory/discord-YYYY-MM-DD.md",
+    "freeChannel": "1468988796992360608",
+    "free发言": "可自由发言、提问、分享"
   }
 }
